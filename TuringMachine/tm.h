@@ -8,6 +8,8 @@
 #include<QTextBlock>
 #include<QList>
 #include<QDebug>
+#include<QFile>
+#include<QTextStream>
 struct Current
 {
     QString state;
@@ -57,7 +59,7 @@ private:QSet<QString> state_set;
         QString msg;
 public:
     TM();
-    void initialTM(QTextDocument* text);
+    void initialTM(QList<QString>);
     int  compute(int x,int y);
 };
 

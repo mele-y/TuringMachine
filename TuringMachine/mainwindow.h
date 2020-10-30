@@ -9,6 +9,7 @@
 #include<QTextDocument>
 #include<QDebug>
 #include "tm.h"
+#include <QTextStream>
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
 QT_END_NAMESPACE
@@ -25,5 +26,7 @@ private:
     Ui::MainWindow *ui;
     QString str;
     TM tm;
+    QByteArray array;
+
 };
 #endif // MAINWINDOW_H

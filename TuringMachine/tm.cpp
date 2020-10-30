@@ -5,13 +5,18 @@ TM::TM()
 
 }
 
-void TM::initialTM(QByteArray array){
+void TM::initialTM(QList<QString> list ){
 
-     QList<QByteArray> list=array.split('\n');
+    //QTextStream stream(&file);
     //int n=text->blockCount();
     QString old_state,new_state;
     QChar input_ch,replace_ch,direction;
-    for(int i=0;i<n;i++)
+    QString str;
+    for(auto i:list)
+        qDebug()<<i;
+
+    /*
+    for(int i=0;i<list.size();i++)
     {
         QString line=QString(list[i]);
         if(!line.length())
@@ -35,6 +40,7 @@ void TM::initialTM(QByteArray array){
     {
         //qDebug()<<i.state<<i.header_symbol<<rules[i].trans_state<<rules[i].replace_symbol<<rules[i].direction;
     }
+    */
 }
 int TM::compute(int x,int y)
 {
