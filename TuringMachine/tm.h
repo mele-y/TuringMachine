@@ -10,7 +10,7 @@ struct Current
 {
     QString state;
     QChar header_symbol;
-    current(QString state,QChar header_symbol)
+    Current(QString state,QChar header_symbol)
     {
         this->state=state;
         this->header_symbol=header_symbol;
@@ -33,7 +33,7 @@ class TM
 {
 private:QSet<QString> state_set;
         QChar blank_symnol='B';
-        QMap<current,trans> rules;
+        QMap<Current,Trans> rules;
         QString final_state="pf";
 public:
     TM();
