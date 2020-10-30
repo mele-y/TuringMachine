@@ -5,13 +5,15 @@ TM::TM()
 
 }
 
-void TM::initialTM(QTextDocument* text){
-    int n=text->blockCount();
+void TM::initialTM(QByteArray array){
+
+     QList<QByteArray> list=array.split('\n');
+    //int n=text->blockCount();
     QString old_state,new_state;
     QChar input_ch,replace_ch,direction;
     for(int i=0;i<n;i++)
     {
-        QString line=text->findBlockByNumber(i).text();
+        QString line=QString(list[i]);
         if(!line.length())
             continue;
         else
