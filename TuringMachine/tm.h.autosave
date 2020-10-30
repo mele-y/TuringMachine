@@ -36,6 +36,10 @@ private:QSet<QString> state_set;
         QChar blank_symnol='B';
         QMap<Current,Trans> rules;
         QString final_state="pf";
+        QString start_state="p0";
+        QString current_state;
+        QList<QChar> tape;
+        QString msg;
 public:
     TM();
     void initialTM(QTextDocument* text);

@@ -29,13 +29,48 @@ void TM::initialTM(QTextDocument* text){
         }
     }
 }
-int compute(int x,int y)
+int TM::compute(int x,int y)
 {
-    QList<QChar> tape;
-    for(int i=0;i<y;i++)
-    {
+     tape.clear();
+     for(int i=0;i<y;i++)
         tape.push_back('1');
-    }
      tape.push_back('0');
-
+     for(int i=0;i<x;i++)
+        tape.push_back('1');
+     current_state=start_state;
+     int index=0;
+     while(current_state!=final_state)
+     {
+         Current c(current_state,tape[index]);
+         if(!rules.contains(c))
+         {
+             msg="转换函数&("+current_state+","+tape[index]+")未定义";
+             break;
+         }
+         else
+         {
+             Trans t=rules[c];
+             current_state=t.trans_state;
+             tape[index]=t.replace_symbol;
+             if(t.direction=='L')
+             {
+                 index--;
+                 if(index<0)
+                 tape.push_front('B');
+             }
+             else
+              {
+                index++;
+                if(index>=tape.size())
+                    tape.push_back('B');
+              }
+         }
+     }
+     int count=0;
+     for(auto i:tape)
+     {
+         if(i=='1')
+             count++;
+     }
+     return count;
 }
