@@ -24,5 +24,6 @@ public:
 private:
     Ui::MainWindow *ui;
     QString str;
+    QByteArray array;
 };
 #endif // MAINWINDOW_H

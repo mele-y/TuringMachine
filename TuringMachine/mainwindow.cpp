@@ -15,10 +15,12 @@ MainWindow::MainWindow(QWidget *parent)
             QFile file(path);
             bool openFlag=file.open(QIODevice::ReadOnly);
             if(openFlag==true){
-               QByteArray array,temp;
+               QByteArray temp;
                while(file.atEnd()==false){
                    QVector<int> blankIndex;
                    temp=file.readLine();
+                   if(temp[0]==' ')
+                       continue;
                    array+=temp;
                    for(int i=0;i<temp.length();i++){
                        if(temp[i]==' ')
@@ -37,8 +39,7 @@ MainWindow::MainWindow(QWidget *parent)
                    sr="("+a+","+b+")"+"|-"+"("+c+","+d+","+e+")\n";
                    this->str.append(sr);
             }
-               QTextDocument text(array);
-//               qDebug()<<text.toPlainText();
+               qDebug()<<array;
                qDebug()<<str;
             file.close();
         }
