@@ -2,7 +2,13 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
-
+#include<QFile>
+#include<QFileDialog>
+#include<QAction>
+#include<QByteArray>
+#include<QTextDocument>
+#include<QDebug>
+#include "tm.h"
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
 QT_END_NAMESPACE
@@ -17,5 +23,7 @@ public:
 
 private:
     Ui::MainWindow *ui;
+    QString str;
+    TM tm;
 };
 #endif // MAINWINDOW_H

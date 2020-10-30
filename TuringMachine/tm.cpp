@@ -4,6 +4,7 @@ TM::TM()
 {
 
 }
+
 void TM::initialTM(QTextDocument* text){
     int n=text->blockCount();
     QString old_state,new_state;
@@ -27,6 +28,10 @@ void TM::initialTM(QTextDocument* text){
            Trans t(new_state,replace_ch,direction);
            rules[c]=t;
         }
+    }
+    for(auto i:rules.keys())
+    {
+        //qDebug()<<i.state<<i.header_symbol<<rules[i].trans_state<<rules[i].replace_symbol<<rules[i].direction;
     }
 }
 int TM::compute(int x,int y)
