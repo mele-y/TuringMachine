@@ -4,6 +4,7 @@
 #include<QSet>
 #include<QString>
 #include<QMap>
+
 struct current
 {
     QString state;
@@ -23,7 +24,7 @@ private:QSet<QString> state_set;
         QMap<current,trans> rules;
 public:
     TM();
-    void initialTM();
+    void initialTM(QString);
 
 };
 
