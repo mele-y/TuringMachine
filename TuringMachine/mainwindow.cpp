@@ -16,34 +16,30 @@ MainWindow::MainWindow(QWidget *parent)
             bool openFlag=file.open(QIODevice::ReadOnly);
             if(openFlag==true){
                QByteArray array,temp;
-               QVector<QString> sv;
                while(file.atEnd()==false){
+                   QVector<int> blankIndex;
                    temp=file.readLine();
                    array+=temp;
-//                   int ibegin;
-//                   int iend=0;
-//                   if(iend!=-1){
-//                      ibegin=iend;
-//                      iend= temp.indexOf(' ',(ibegin+1)); //每次找到空格
-//                      QString sr="";
-//                      for(int j=ibegin;j<iend;j++){
-//                          sr+=temp[j]; //每次得到字符串
-//                      }
-//                       sv.append(sr);
-//                   }
-//                   QString sr="";
-//                   for(int j=iend;j<temp.length();j++){
-//                        sr+=temp[j];
-//                   }
-//                   sv.append(sr);
-//                   sr.clear();
-
-////                 /*sr="("+sv[0]+","+sv[1]+")"+"|-"+"("+sv[2]+","+sv[3]+","+sv[4]+")\n";
-//                   //this->str.append(sr);*/
-//                   qDebug()<<sv;
+                   for(int i=0;i<temp.length();i++){
+                       if(temp[i]==' ')
+                           blankIndex.append(i);
+                   }
+//                   qDebug()<<blankIndex;
+                   QString a,b,c,d,e;
+                   for(int i=0;i<blankIndex[0];i++)
+                       a+=temp[i];
+                       b+=temp[blankIndex[0]+1];
+                   for(int i=blankIndex[1]+1;i<blankIndex[2];i++)
+                       c+=temp[i];
+                       d+=temp[blankIndex[2]+1];
+                       e+=temp[blankIndex[3]+1];
+                   QString sr;
+                   sr="("+a+","+b+")"+"|-"+"("+c+","+d+","+e+")\n";
+                   this->str.append(sr);
             }
                QTextDocument text(array);
-               qDebug()<<text.toPlainText();
+//               qDebug()<<text.toPlainText();
+               qDebug()<<str;
             file.close();
         }
     }
