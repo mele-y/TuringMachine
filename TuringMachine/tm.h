@@ -55,7 +55,7 @@ private:QSet<QString> state_set;
         QString final_state="pf";
         QString start_state="p0";
         QString current_state;
-        QList<QChar> tape;
+        //QList<QChar> tape;
         QString msg;
 public:
     TM();
